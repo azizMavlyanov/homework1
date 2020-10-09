@@ -26,7 +26,7 @@ public class WikipediaSearchEngine {
 
         // 2. очистить папку с результатами
         final FileEngine fileEngine = new FileEngine();
-        fileEngine.cleanResultDir();
+        fileEngine.cleanResultDir(searchString);
 
         // 3. найти и загрузить все плагины
         final PluginLoader pluginLoader = new PluginLoader();
@@ -41,7 +41,7 @@ public class WikipediaSearchEngine {
             final String pluginName = plugin.getSimpleName();
             logger.info("Apply '{}' plugin get result {}", pluginName, result);
 
-            fileEngine.writeToFile(result, pluginName);
+            fileEngine.writeToFile(result, pluginName, searchString);
         }
     }
 }
